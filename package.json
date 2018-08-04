@@ -1,0 +1,58 @@
+{
+  "name": "webrtc-link",
+  "version": "1.0.0",
+  "description": "A module for working with WebRTC peer connections in the browser",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shanebloomer/webrtc-link.git"
+  },
+  "homepage": "https://github.com/shanebloomer/webrtc-link",
+  "bugs": {
+    "url": "https://github.com/shanebloomer/webrtc-link/issues"
+  },
+  "keywords": [
+    "RTCPeerConnection",
+    "RTCDatachannel",
+    "data channel",
+    "peer-to-peer",
+    "p2p",
+    "webrtc"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "dist/"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.55",
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "airtap": "^0.1.0",
+    "babel-plugin-add-module-exports": "^0.3.2",
+    "babelify": "^9.0.0",
+    "bowser": "^1.9.4",
+    "browserify": "^16.2.2",
+    "depcheck": "^0.6.7",
+    "regenerator-runtime": "^0.11.1",
+    "snazzy": "^7.0.0",
+    "standard": "^11.0.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1",
+    "uglify-es": "^3.3.9"
+  },
+  "scripts": {
+    "build": "babel --plugins add-module-exports src/ --out-dir dist/",
+    "build-standalone": "browserify --standalone WebRTCPeer src/index.js --transform [ babelify --plugins ['add-module-exports'] ] | uglifyjs --compress --mangle --output webrtc-link.min.js",
+    "test-browser-local": "airtap --local --port 8080 test/index.js",
+    "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-plugin-add-module-exports, babel-preset-env, babelify, snazzy, standard, tap-spec'",
+    "test-node": "npm run test-lint && (tape test/node.test.js | tap-spec)"
+  }
+}

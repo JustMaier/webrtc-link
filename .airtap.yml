@@ -1,0 +1,16 @@
+ui: tape
+browserify:
+  - transform:
+      name: babelify
+      presets: [ "@babel/preset-env" ]
+browsers:
+  - name: chrome
+    version: latest
+  - name: firefox
+    version: latest
+  - name: opera
+    version: latest
+  - name: safari
+    version: latest
+  - name: iphone
+    version: latest

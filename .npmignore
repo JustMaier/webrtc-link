@@ -1,0 +1,7 @@
+.airtap.yml
+.travis.yml
+
+src/
+test/
+
+issues.md
