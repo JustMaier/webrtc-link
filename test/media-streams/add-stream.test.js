@@ -25,7 +25,6 @@ test('add stream non-initiator only - stream event is emitted', assert => {
 
 function testAddStream (assert, sendingPeer, nonSendingPeer) {
   const mediaStream = testUtil.getMediaStream()
-  console.log(mediaStream.getTracks())
   sendingPeer.on('connect', () => sendingPeer.addStream(mediaStream))
 
   nonSendingPeer.on('stream', function (receivedStream) {
