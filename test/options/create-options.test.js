@@ -16,7 +16,8 @@ test('default options are set when none are defined', assert => {
     isInitiator: false,
     isTrickleIceEnabled: true,
     peerConnectionConfig: {
-      iceServers: []
+      iceServers: [],
+      sdpSemantics: 'unified-plan'
     },
     streams: []
   }
@@ -63,7 +64,8 @@ test('default options are overriden', assert => {
     isTrickleIceEnabled: false,
     peerConnectionConfig: {
       iceServers: [{ urls: 'stun:astunserverurl.com:2018' }],
-      peerIdentity: 'a peer identifier'
+      peerIdentity: 'a peer identifier',
+      sdpSemantics: 'unified-plan'
     },
     sdpTransformer: sdpTransformer,
     streams: []

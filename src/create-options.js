@@ -14,6 +14,11 @@ function createOptions (inputOptions) {
 function getPeerConnectionConfig (userOptions) {
   const peerConnectionConfig = userOptions.peerConnectionConfig || {}
 
+  // Required by Google Chrome version 69.
+  // This can be removed in the future when 'unified-plan'
+  // becomes the default.
+  peerConnectionConfig.sdpSemantics = 'unified-plan'
+
   if (!Array.isArray(peerConnectionConfig.iceServers)) {
     peerConnectionConfig.iceServers = []
   }
