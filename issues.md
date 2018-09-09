@@ -2,7 +2,9 @@
 
 ## Google Chrome
 
-- Chrome does not support the RTCRtpTransceiver API. As a result the options for createOffer must always be specified in order to accept incoming audio and video.
+- Google Chrome version 69 added support for the RTCRtpTransceiver API. It can be enabled by passing `{ sdpSemantics: 'unified-plan' }` to the RTCPeerConnection constructor.
+- However Chrome continually crashes whenever peerConnection.addTransceiver is used.
+- As a result the options for createOffer must always be specified in order to accept incoming audio and video.
 
 ```js
 const offerOptions = {
@@ -13,7 +15,9 @@ const offerOptions = {
 peerConnection.createOffer(offerOptions)
 ```
 
-- When the RTCRtpTransceiver API has been implemented remove the offerOptions from createOffer.
+- Work to fix this is ongoing on the following branch [google-chrome-rtcrtptransceiver](https://github.com/shanebloomer/webrtc-link/tree/google-chrome-rtcrtptransceiver).
+- When the RTCRtpTransceiver API becomes stable in Chrome remove the offerOptions from createOffer.
+- In the future `unified-plan` will become the default.
 
 ## Microsoft Edge
 

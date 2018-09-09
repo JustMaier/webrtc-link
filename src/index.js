@@ -337,11 +337,14 @@ class WebRTCPeer extends EventEmitter {
   _createOffer () {
     const self = this
     if (self._isDestroyed) return
-    self._acceptIncomingVideoAndAudio()
+
+    const isGoogleChrome = !!window.chrome
+    if (!isGoogleChrome) {
+      self._acceptIncomingVideoAndAudio()
+    }
 
     // Google Chrome requires offerOptions - see issues.md for further information.
-    const isTransceiversSupported = 'getTransceivers' in window.RTCPeerConnection.prototype
-    const offerOptions = isTransceiversSupported ? {} : {
+    const offerOptions = !isGoogleChrome ? {} : {
       offerToReceiveAudio: true,
       offerToReceiveVideo: true
     }
@@ -382,9 +385,6 @@ class WebRTCPeer extends EventEmitter {
   }
 
   _acceptIncomingVideoAndAudio () {
-    const isTransceiversSupported = 'getTransceivers' in window.RTCPeerConnection.prototype
-    if (!isTransceiversSupported) return
-
     const audioTransceiver = this._peerConnection.getTransceivers()
       .find(transceiver => transceiver.sender.track && transceiver.sender.track.kind === 'audio')
 
