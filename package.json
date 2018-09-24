@@ -32,9 +32,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.55",
-    "@babel/core": "^7.0.0-beta.55",
-    "@babel/preset-env": "^7.0.0-beta.55",
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "airtap": "^0.1.0",
     "babel-plugin-add-module-exports": "^0.3.2",
     "babelify": "^9.0.0",
