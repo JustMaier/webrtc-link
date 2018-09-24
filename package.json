@@ -21,9 +21,7 @@
     "webrtc"
   ],
   "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+    "presets": [["@babel/preset-env", { "targets": { "browsers": "last 1 chrome version" } }]]
   },
   "standard": {
     "ignore": [
@@ -41,7 +39,6 @@
     "bowser": "^1.9.4",
     "browserify": "^16.2.2",
     "depcheck": "^0.6.7",
-    "regenerator-runtime": "^0.11.1",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1",
     "tap-spec": "^5.0.0",
