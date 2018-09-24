@@ -21,7 +21,16 @@
     "webrtc"
   ],
   "babel": {
-    "presets": [["@babel/preset-env", { "targets": { "browsers": "last 1 chrome version" } }]]
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": "last 1 chrome version"
+          }
+        }
+      ]
+    ]
   },
   "standard": {
     "ignore": [
@@ -34,13 +43,13 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "airtap": "^0.1.0",
-    "babel-plugin-add-module-exports": "^0.3.2",
-    "babelify": "^9.0.0",
-    "bowser": "^1.9.4",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babelify": "^10.0.0",
+    "bowser": "^2.0.0-beta.3",
     "browserify": "^16.2.2",
     "depcheck": "^0.6.7",
-    "snazzy": "^7.0.0",
-    "standard": "^11.0.1",
+    "snazzy": "^8.0.0",
+    "standard": "^12.0.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1",
     "uglify-es": "^3.3.9"
