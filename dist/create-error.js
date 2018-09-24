@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 function createError(message, code) {
-  var err = new Error(message);
+  const err = new Error(message);
   err.code = code;
   return err;
 }

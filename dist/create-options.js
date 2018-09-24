@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 function createOptions(inputOptions) {
-  var userOptions = inputOptions || {};
+  const userOptions = inputOptions || {};
   return {
     dataChannelConfig: userOptions.dataChannelConfig || {},
     isInitiator: userOptions.isInitiator === true,
@@ -18,7 +18,7 @@ function createOptions(inputOptions) {
 }
 
 function getPeerConnectionConfig(userOptions) {
-  var peerConnectionConfig = userOptions.peerConnectionConfig || {};
+  const peerConnectionConfig = userOptions.peerConnectionConfig || {};
 
   if (!Array.isArray(peerConnectionConfig.iceServers)) {
     peerConnectionConfig.iceServers = [];
@@ -28,9 +28,7 @@ function getPeerConnectionConfig(userOptions) {
 }
 
 function getSdpTransformer(userOptions) {
-  return typeof userOptions.sdpTransformer === 'function' ? userOptions.sdpTransformer : function (sdp) {
-    return sdp;
-  };
+  return typeof userOptions.sdpTransformer === 'function' ? userOptions.sdpTransformer : sdp => sdp;
 }
 
 function getStreams(userOptions) {
