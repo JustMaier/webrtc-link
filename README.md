@@ -51,6 +51,8 @@ The exact details of the signal object are unspecified.
 
 Transporting the signal data to the remote peer is usually done over WebSockets.
 
+A good WebSockets module is [one-websocket](https://github.com/shanebloomer/one-websocket).
+
 ### Event: 'connect'
 
 ```js
