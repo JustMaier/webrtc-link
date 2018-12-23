@@ -227,4 +227,4 @@ $ npm run test-node
 
 ## License
 
-MIT. Copyright (c) [Shane Bloomer](https://github.com/shanebloomer).
+MIT. Copyright (c) [Shane Bloomer](https://shanebloomer.com).
