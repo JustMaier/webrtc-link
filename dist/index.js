@@ -493,7 +493,7 @@ class WebRTCPeer extends _events.EventEmitter {
     }
 
     if (!('createDataChannel' in window.RTCPeerConnection.prototype)) {
-      console.log('webrtc-peer :: data channel is not supported in this browser');
+      console.log('webrtc-link :: data channel is not supported in this browser');
     }
   }
 

@@ -10,7 +10,7 @@ function createOptions(inputOptions) {
   return {
     dataChannelConfig: userOptions.dataChannelConfig || {},
     isInitiator: userOptions.isInitiator === true,
-    isTrickleIceEnabled: !(userOptions.isTrickleIceEnabled === false),
+    isTrickleIceEnabled: userOptions.isTrickleIceEnabled !== false,
     peerConnectionConfig: getPeerConnectionConfig(userOptions),
     sdpTransformer: getSdpTransformer(userOptions),
     streams: getStreams(userOptions)
