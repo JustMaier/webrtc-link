@@ -89,7 +89,7 @@ class WebRTCPeer extends EventEmitter {
 
   send (data) {
     if (this._isDestroyed) {
-      throw createError('cannot getStats after peer is destroyed', errorCodes.PEER_IS_DESTROYED)
+      throw createError('cannot call send after peer is destroyed', errorCodes.PEER_IS_DESTROYED)
     }
     this._dataChannel.send(data)
   }

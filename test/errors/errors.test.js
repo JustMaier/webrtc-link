@@ -131,6 +131,33 @@ test('getStats() throws an error when called after peer has been destroyed', ass
   })
 })
 
+test('send(message) throws an error when called after peer has been destroyed', assert => {
+  // given
+  assert.plan(3)
+  const peerOne = new WebRTCPeer({ isInitiator: true })
+  const peerTwo = new WebRTCPeer()
+  testUtil.addSignalEvents(peerOne, peerTwo)
+
+  peerOne.on('connect', () => peerOne.send('Hello, Peer Two!'))
+  peerTwo.on('data', () => peerTwo.send('Hello, Peer One!'))
+
+  // then
+  peerOne.on('data', function () {
+    peerOne.destroy()
+
+    // when
+    const err = tryCatch(() => peerOne.send('the message'))
+
+    // then
+    assert.true(isError(err))
+    assert.is(err.code, testErrorCodes.PEER_IS_DESTROYED)
+    assert.is(err.message, 'cannot call send after peer is destroyed')
+
+    peerOne.destroy()
+    peerTwo.destroy()
+  })
+})
+
 test('create offer - set local description error code is emitted when sdpTransformer returns invalid data', assert => {
   // given
   assert.plan(3)
