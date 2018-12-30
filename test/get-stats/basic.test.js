@@ -44,8 +44,8 @@ test('getStats() returns an RTCStatsReport', async assert => {
   const peerTwo = new WebRTCPeer()
 
   // then
-  assert.true(await peerOne.getStats() instanceof RTCStatsReport, 'is instance of RTCStatsReport')
-  assert.true(await peerTwo.getStats() instanceof RTCStatsReport, 'is instance of RTCStatsReport')
+  assert.true(await peerOne.getStats() instanceof window.RTCStatsReport, 'is instance of RTCStatsReport')
+  assert.true(await peerTwo.getStats() instanceof window.RTCStatsReport, 'is instance of RTCStatsReport')
   peerOne.destroy()
   peerTwo.destroy()
   assert.end()
