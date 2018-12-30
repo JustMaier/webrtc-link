@@ -1,4 +1,4 @@
-function createOptions (inputOptions) {
+function buildOptions (inputOptions) {
   const userOptions = inputOptions || {}
 
   return {
@@ -30,4 +30,4 @@ function getStreams (userOptions) {
   return Array.isArray(userOptions.streams) ? userOptions.streams : []
 }
 
-export default createOptions
+export default buildOptions

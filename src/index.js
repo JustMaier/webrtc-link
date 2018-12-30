@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 
 import createError from './create-error'
-import createOptions from './create-options'
+import buildOptions from './build-options'
 import * as errorCodes from './error-codes'
 
 class WebRTCPeer extends EventEmitter {
@@ -12,7 +12,7 @@ class WebRTCPeer extends EventEmitter {
 
     self._checkWebRTCSupport()
 
-    self._options = createOptions(options)
+    self._options = buildOptions(options)
 
     self._isConnected = false
     self._isDestroyed = false

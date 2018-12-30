@@ -1,6 +1,6 @@
 import test from 'tape'
 
-import createOptions from '../../src/create-options'
+import buildOptions from '../../src/build-options'
 
 test('default options are set when none are defined', assert => {
   // given
@@ -23,7 +23,7 @@ test('default options are set when none are defined', assert => {
 
   inputs.forEach(function (userOptions) {
     // when
-    const result = createOptions(userOptions)
+    const result = buildOptions(userOptions)
 
     // exclude functions from equality check.
     assert.is(typeof result.sdpTransformer, 'function')
@@ -52,7 +52,7 @@ test('default options are overriden', assert => {
   }
 
   // when
-  const result = createOptions(inputOptions)
+  const result = buildOptions(inputOptions)
 
   // then
   const expectedOptions = {
