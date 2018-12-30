@@ -35,6 +35,11 @@
       ]
     ]
   },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "standard": {
     "ignore": [
       "dist/"
@@ -59,7 +64,7 @@
   },
   "scripts": {
     "build": "babel src/ --out-dir dist/",
-    "build-standalone": "browserify --standalone WebRTCPeer src/index.js --transform [ babelify ] | uglifyjs --compress --mangle --output webrtc-link.min.js",
+    "build-standalone": "browserify --standalone WebRTCPeer src/index.js | uglifyjs --compress --mangle --output webrtc-link.min.js",
     "test-browser-local": "airtap --local --port 8080 test/index.js",
     "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-plugin-add-module-exports, babel-preset-env, babelify, snazzy, standard, tap-spec'",
     "test-node": "npm run test-lint && (tape test/node.test.js | tap-spec)"
