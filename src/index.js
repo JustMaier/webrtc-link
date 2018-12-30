@@ -81,7 +81,7 @@ class WebRTCPeer extends EventEmitter {
 
   removeTrack (track) {
     if (!this._mediaTracksMap.has(track)) {
-      throw createError('cannot remove track that was never added', errorCodes.REMOVE_TRACK)
+      throw createError('cannot remove track that was never added or has already been removed', errorCodes.REMOVE_TRACK)
     }
     const rtcRtpSender = this._mediaTracksMap.get(track)
     this._peerConnection.removeTrack(rtcRtpSender)
@@ -186,8 +186,9 @@ class WebRTCPeer extends EventEmitter {
   _setUpDefaultDataChannel () {
     const self = this
     if (self._options.isInitiator) {
+      const label = null
       const dataChannel = self._peerConnection.createDataChannel(
-        null,
+        label,
         self._options.dataChannelConfig)
 
       self._assignDataChannel({ channel: dataChannel })

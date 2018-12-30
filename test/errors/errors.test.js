@@ -217,7 +217,7 @@ test('remove stream throws an error when called with a stream that was never add
     // then
     assert.true(isError(err))
     assert.is(err.code, testErrorCodes.REMOVE_TRACK)
-    assert.is(err.message, 'cannot remove track that was never added')
+    assert.is(err.message, 'cannot remove track that was never added or has already been removed')
     peerOne.destroy()
     peerTwo.destroy()
   })
@@ -243,7 +243,7 @@ test('remove track throws an error when called with a track that was never added
     // then
     assert.true(isError(err))
     assert.is(err.code, testErrorCodes.REMOVE_TRACK)
-    assert.is(err.message, 'cannot remove track that was never added')
+    assert.is(err.message, 'cannot remove track that was never added or has already been removed')
     peerOne.destroy()
     peerTwo.destroy()
   })
