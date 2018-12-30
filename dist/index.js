@@ -9,7 +9,7 @@ var _events = require("events");
 
 var _createError = _interopRequireDefault(require("./create-error"));
 
-var _createOptions = _interopRequireDefault(require("./create-options"));
+var _parseOptions = _interopRequireDefault(require("./parse-options"));
 
 var errorCodes = _interopRequireWildcard(require("./error-codes"));
 
@@ -24,7 +24,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
     self._checkWebRTCSupport();
 
-    self._options = (0, _createOptions.default)(options);
+    self._options = (0, _parseOptions.default)(options);
     self._isConnected = false;
     self._isDestroyed = false;
     self._isIceComplete = false;
@@ -92,7 +92,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
   removeTrack(track) {
     if (!this._mediaTracksMap.has(track)) {
-      throw (0, _createError.default)('cannot remove track that was never added', errorCodes.REMOVE_TRACK);
+      throw (0, _createError.default)('cannot remove track that was never added or has already been removed', errorCodes.REMOVE_TRACK);
     }
 
     const rtcRtpSender = this._mediaTracksMap.get(track);
@@ -102,7 +102,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
   send(data) {
     if (this._isDestroyed) {
-      throw (0, _createError.default)('cannot getStats after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
+      throw (0, _createError.default)('cannot call send after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
     }
 
     this._dataChannel.send(data);
@@ -203,7 +203,9 @@ class WebRTCPeer extends _events.EventEmitter {
     const self = this;
 
     if (self._options.isInitiator) {
-      const dataChannel = self._peerConnection.createDataChannel(null, self._options.dataChannelConfig);
+      const label = null;
+
+      const dataChannel = self._peerConnection.createDataChannel(label, self._options.dataChannelConfig);
 
       self._assignDataChannel({
         channel: dataChannel

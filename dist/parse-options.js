@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-function createOptions(inputOptions) {
+function parseOptions(inputOptions) {
   const userOptions = inputOptions || {};
   return {
     dataChannelConfig: userOptions.dataChannelConfig || {},
@@ -35,6 +35,6 @@ function getStreams(userOptions) {
   return Array.isArray(userOptions.streams) ? userOptions.streams : [];
 }
 
-var _default = createOptions;
+var _default = parseOptions;
 exports.default = _default;
 module.exports = exports.default;
