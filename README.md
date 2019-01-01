@@ -209,6 +209,26 @@ This is a required part of the handshake process to set up a connection with the
 - `ERR_SIGNALING`
 - `ERR_WEBRTC_SUPPORT`
 
+## STUN/TURN Servers
+
+STUN/TURN servers can be specified via the WebRTC Peer constructor.
+
+```sh
+const iceServers = [
+  { urls: '<your stun/turn server url>' },
+  { urls: '<another stun/turn server url>' }
+]
+
+const peerOne = new WebRTCPeer({
+  isInitiator: true,
+  iceServers: iceServers
+})
+
+const peerTwo = new WebRTCPeer({
+  iceServers: iceServers
+})
+```
+
 ## Development
 
 Run the browser tests locally.
