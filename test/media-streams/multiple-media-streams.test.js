@@ -1,4 +1,3 @@
-import BrowserDetector from 'bowser'
 import test from 'tape'
 
 import testUtil from '../test-util'
@@ -38,7 +37,7 @@ test('multiple streams via constructor for both peers', async assert => {
 })
 
 test('incrementally add streams for both peers', assert => {
-  if (BrowserDetector.safari) {
+  if (testUtil.isSafari()) {
     console.log('Safari only :: skipping incrementally add streams for both peers')
     assert.end()
     return

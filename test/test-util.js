@@ -1,3 +1,5 @@
+import BrowserDetector from 'bowser'
+
 function addSignalEvents (peerOne, peerTwo) {
   peerOne.on('signal', signalData => peerTwo.signal(signalData))
   peerTwo.on('signal', signalData => peerOne.signal(signalData))
@@ -51,6 +53,11 @@ function getMediaStreams (count) {
   return mediaStreams
 }
 
+function isSafari () {
+  const browserName = BrowserDetector.getParser(window.navigator.userAgent).getBrowserName()
+  return browserName.toUpperCase() === 'SAFARI'
+}
+
 function validateCount (count) {
   if (!Number.isInteger(count) || count < 1) {
     throw new Error('count must be a positive integer')
@@ -69,5 +76,6 @@ export default {
   getAudioTrack,
   getMediaStream,
   getMediaStreams,
+  isSafari,
   wait
 }

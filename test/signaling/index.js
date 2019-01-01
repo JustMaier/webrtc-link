@@ -1,8 +1,8 @@
-import BrowserDetector from 'bowser'
+import { isSafari } from '../test-util'
 
 import './signal-messages.test'
 
-if (BrowserDetector.safari) {
+if (isSafari()) {
   console.log('Safari :: skipping trickle-ice-candidates.test.js')
 } else {
   require('./trickle-ice-candidates.test')

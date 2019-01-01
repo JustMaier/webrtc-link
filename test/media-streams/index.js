@@ -1,11 +1,11 @@
-import BrowserDetector from 'bowser'
+import { isSafari } from '../test-util'
 
 import './add-stream.test'
 import './add-track.test'
 import './multiple-media-streams.test'
 import './constructor-media-stream.test'
 
-if (BrowserDetector.safari) {
+if (isSafari()) {
   console.log('Safari :: skipping remove-stream.test.js and remove-track.test.js')
 } else {
   require('./remove-stream.test')
