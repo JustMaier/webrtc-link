@@ -213,7 +213,7 @@ This is a required part of the handshake process to set up a connection with the
 
 STUN/TURN servers can be specified via the WebRTC Peer constructor.
 
-```sh
+```js
 const iceServers = [
   { urls: '<your stun/turn server url>' },
   { urls: '<another stun/turn server url>' }
