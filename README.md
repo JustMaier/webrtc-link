@@ -233,7 +233,7 @@ const peerTwo = new WebRTCPeer({
 
 The internal data channel can be configured in the `WebRTCPeer` constructor by specifying the `dataChannelConfig` option.
 
-Below is an example of making the data channel "UDP" like.
+Below is an example of making the data channel [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) like.
 
 ```js
 const peerOne = new WebRTCPeer({
