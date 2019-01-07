@@ -229,6 +229,22 @@ const peerTwo = new WebRTCPeer({
 })
 ```
 
+## Data Channel Configuration
+
+The internal data channel can be configured in the `WebRTCPeer` constructor by specifying the `dataChannelConfig` option.
+
+Below is an example of making the data channel "UDP" like.
+
+```js
+const peerOne = new WebRTCPeer({
+  isInitiator: true,
+  dataChannelConfig: {
+    maxRetransmits: 0,
+    ordered: false
+  }
+})
+```
+
 ## Development
 
 Run the browser tests locally.
