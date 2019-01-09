@@ -19,12 +19,6 @@ peerConnection.createOffer(offerOptions)
 - When the RTCRtpTransceiver API becomes stable in Chrome remove the offerOptions from createOffer.
 - In the future `unified-plan` will become the default.
 
-## Microsoft Edge
-
-- Data channels are currently not supported.
-- Data channels current status: https://developer.microsoft.com/en-us/microsoft-edge/platform/status/rtcdatachannels/
-- Add Microsoft Edge to the list of browsers to test against once data channels are implemented.
-
 ## Safari
 
 - Safari behaves differently when only the data channel is used. It will fail to establish a connection unless TURN servers are specified or navigator.mediaDevices.getUserMedia is called.
