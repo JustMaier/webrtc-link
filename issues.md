@@ -1,24 +1,5 @@
 # Issues
 
-## Google Chrome
-
-- Google Chrome version 69 added support for the RTCRtpTransceiver API. It can be enabled by passing `{ sdpSemantics: 'unified-plan' }` to the RTCPeerConnection constructor.
-- However Chrome continually crashes whenever peerConnection.addTransceiver is used.
-- As a result the options for createOffer must always be specified in order to accept incoming audio and video.
-
-```js
-const offerOptions = {
-  offerToReceiveAudio: true,
-  offerToReceiveVideo: true
-}
-
-peerConnection.createOffer(offerOptions)
-```
-
-- Work to fix this is ongoing on the following branch [google-chrome-rtcrtptransceiver](https://github.com/shanebloomer/webrtc-link/tree/google-chrome-rtcrtptransceiver).
-- When the RTCRtpTransceiver API becomes stable in Chrome remove the offerOptions from createOffer.
-- In the future `unified-plan` will become the default.
-
 ## Safari
 
 - Safari behaves differently when only the data channel is used. It will fail to establish a connection unless TURN servers are specified or navigator.mediaDevices.getUserMedia is called.
