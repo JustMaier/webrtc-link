@@ -1,8 +1,8 @@
-import { EventEmitter } from 'events'
+const { EventEmitter } = require('events')
 
-import createError from './create-error'
-import parseOptions from './parse-options'
-import * as errorCodes from './error-codes'
+const createError = require('./create-error')
+const parseOptions = require('./parse-options')
+const errorCodes = require('./error-codes')
 
 class WebRTCPeer extends EventEmitter {
   constructor (options) {
@@ -489,4 +489,4 @@ class WebRTCPeer extends EventEmitter {
   }
 }
 
-export default WebRTCPeer
+module.exports = WebRTCPeer

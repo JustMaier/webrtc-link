@@ -1,6 +1,6 @@
-import test from 'tape'
+const test = require('tape')
 
-import WebRTCPeer from '../../src/'
+const WebRTCPeer = require('../../src/')
 
 test('signal accepts stringified signal data', assert => {
   // given

@@ -1,10 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
 function parseOptions(inputOptions) {
   const userOptions = inputOptions || {};
   return {
@@ -35,6 +30,4 @@ function getStreams(userOptions) {
   return Array.isArray(userOptions.streams) ? userOptions.streams : [];
 }
 
-var _default = parseOptions;
-exports.default = _default;
-module.exports = exports.default;
+module.exports = parseOptions;

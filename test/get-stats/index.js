@@ -1,1 +1,1 @@
-import './basic.test'
+require('./basic.test')

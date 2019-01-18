@@ -1,30 +1,23 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+const {
+  EventEmitter
+} = require('events');
 
-var _events = require("events");
+const createError = require('./create-error');
 
-var _createError = _interopRequireDefault(require("./create-error"));
+const parseOptions = require('./parse-options');
 
-var _parseOptions = _interopRequireDefault(require("./parse-options"));
+const errorCodes = require('./error-codes');
 
-var errorCodes = _interopRequireWildcard(require("./error-codes"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class WebRTCPeer extends _events.EventEmitter {
+class WebRTCPeer extends EventEmitter {
   constructor(options) {
     super();
     const self = this;
 
     self._checkWebRTCSupport();
 
-    self._options = (0, _parseOptions.default)(options);
+    self._options = parseOptions(options);
     self._isConnected = false;
     self._isDestroyed = false;
     self._isIceComplete = false;
@@ -72,7 +65,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
   getStats() {
     if (this._isDestroyed) {
-      throw (0, _createError.default)('cannot getStats after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
+      throw createError('cannot getStats after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
     }
 
     return this._peerConnection.getStats();
@@ -92,7 +85,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
   removeTrack(track) {
     if (!this._mediaTracksMap.has(track)) {
-      throw (0, _createError.default)('cannot remove track that was never added or has already been removed', errorCodes.REMOVE_TRACK);
+      throw createError('cannot remove track that was never added or has already been removed', errorCodes.REMOVE_TRACK);
     }
 
     const rtcRtpSender = this._mediaTracksMap.get(track);
@@ -102,7 +95,7 @@ class WebRTCPeer extends _events.EventEmitter {
 
   send(data) {
     if (this._isDestroyed) {
-      throw (0, _createError.default)('cannot call send after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
+      throw createError('cannot call send after peer is destroyed', errorCodes.PEER_IS_DESTROYED);
     }
 
     this._dataChannel.send(data);
@@ -112,7 +105,7 @@ class WebRTCPeer extends _events.EventEmitter {
     const self = this;
 
     if (self._isDestroyed) {
-      throw (0, _createError.default)('cannot signal after peer is destroyed', errorCodes.SIGNALING);
+      throw createError('cannot signal after peer is destroyed', errorCodes.SIGNALING);
     }
 
     let signalData = data;
@@ -132,12 +125,12 @@ class WebRTCPeer extends _events.EventEmitter {
     } else if (signalData.renegotiate) {
       self._onNegotiationNeeded();
     } else {
-      const destroyError = (0, _createError.default)('signal called with invalid signal data', errorCodes.SIGNALING);
+      const destroyError = createError('signal called with invalid signal data', errorCodes.SIGNALING);
       self.destroy(destroyError);
     }
 
     function onAddIceCandidateError(err) {
-      const destroyError = (0, _createError.default)(err, errorCodes.ADD_ICE_CANDIDATE);
+      const destroyError = createError(err, errorCodes.ADD_ICE_CANDIDATE);
       self.destroy(destroyError);
     }
   }
@@ -156,7 +149,7 @@ class WebRTCPeer extends _events.EventEmitter {
     }
 
     function onSetRemoteDescriptionError(err) {
-      const destroyError = (0, _createError.default)(err, errorCodes.SET_REMOTE_DESCRIPTION);
+      const destroyError = createError(err, errorCodes.SET_REMOTE_DESCRIPTION);
       self.destroy(destroyError);
     }
   }
@@ -256,12 +249,12 @@ class WebRTCPeer extends _events.EventEmitter {
     }
 
     function onCreateAnswerError(err) {
-      const destroyError = (0, _createError.default)(err, errorCodes.CREATE_ANSWER);
+      const destroyError = createError(err, errorCodes.CREATE_ANSWER);
       self.destroy(destroyError);
     }
 
     function onSetLocalDescriptionError(err) {
-      const destroyError = (0, _createError.default)(err, errorCodes.SET_LOCAL_DESCRIPTION);
+      const destroyError = createError(err, errorCodes.SET_LOCAL_DESCRIPTION);
       self.destroy(destroyError);
     }
 
@@ -347,9 +340,9 @@ class WebRTCPeer extends _events.EventEmitter {
     const iceConnectionState = self._peerConnection.iceConnectionState;
 
     if (iceConnectionState === 'failed') {
-      self.destroy((0, _createError.default)('Ice connection failed.', errorCodes.ICE_CONNECTION_FAILURE));
+      self.destroy(createError('Ice connection failed.', errorCodes.ICE_CONNECTION_FAILURE));
     } else if (iceConnectionState === 'closed') {
-      self.destroy((0, _createError.default)('ice connection closed', errorCodes.ICE_CONNECTION_CLOSED));
+      self.destroy(createError('ice connection closed', errorCodes.ICE_CONNECTION_CLOSED));
     }
   }
 
@@ -387,11 +380,11 @@ class WebRTCPeer extends _events.EventEmitter {
     }
 
     function onCreateOfferError(err) {
-      self.destroy((0, _createError.default)(err, errorCodes.CREATE_OFFER));
+      self.destroy(createError(err, errorCodes.CREATE_OFFER));
     }
 
     function onSetLocalDescriptionError(err) {
-      self.destroy((0, _createError.default)(err, errorCodes.SET_LOCAL_DESCRIPTION));
+      self.destroy(createError(err, errorCodes.SET_LOCAL_DESCRIPTION));
     }
 
     function sendOffer() {
@@ -425,7 +418,7 @@ class WebRTCPeer extends _events.EventEmitter {
     self._dataChannel.onerror = function (errorEvent) {
       const errorMessage = errorEvent.message;
       const errorCode = errorCodes.DATA_CHANNEL;
-      const destroyError = (0, _createError.default)(errorMessage, errorCode);
+      const destroyError = createError(errorMessage, errorCode);
       self.destroy(destroyError);
     };
 
@@ -487,11 +480,11 @@ class WebRTCPeer extends _events.EventEmitter {
 
   _checkWebRTCSupport() {
     if (typeof window === 'undefined') {
-      throw (0, _createError.default)('WebRTC is not supported in this environment', errorCodes.WEBRTC_SUPPORT);
+      throw createError('WebRTC is not supported in this environment', errorCodes.WEBRTC_SUPPORT);
     }
 
     if (window.RTCPeerConnection == null) {
-      throw (0, _createError.default)('WebRTC is not supported in this browser', errorCodes.WEBRTC_SUPPORT);
+      throw createError('WebRTC is not supported in this browser', errorCodes.WEBRTC_SUPPORT);
     }
 
     if (!('createDataChannel' in window.RTCPeerConnection.prototype)) {
@@ -501,6 +494,4 @@ class WebRTCPeer extends _events.EventEmitter {
 
 }
 
-var _default = WebRTCPeer;
-exports.default = _default;
-module.exports = exports.default;
+module.exports = WebRTCPeer;

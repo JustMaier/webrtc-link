@@ -1,1 +1,1 @@
-import './send.test'
+require('./send.test')

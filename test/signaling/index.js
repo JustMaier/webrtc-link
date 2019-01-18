@@ -1,6 +1,6 @@
-import { isSafari } from '../test-util'
+const { isSafari } = require('../test-util')
 
-import './signal-messages.test'
+require('./signal-messages.test')
 
 if (isSafari()) {
   console.log('Safari :: skipping trickle-ice-candidates.test.js')

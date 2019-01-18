@@ -1,7 +1,7 @@
-import test from 'tape'
+const test = require('tape')
 
-import testUtil from '../test-util'
-import WebRTCPeer from '../../src/'
+const testUtil = require('../test-util')
+const WebRTCPeer = require('../../src/')
 
 test('add stream initiator only - stream event is emitted', assert => {
   assert.plan(2)

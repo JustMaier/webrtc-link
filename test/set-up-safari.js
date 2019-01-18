@@ -1,4 +1,4 @@
-import { isSafari } from './test-util'
+const { isSafari } = require('./test-util')
 
 if (isSafari()) {
   console.log('Safari :: requesting access to media device')

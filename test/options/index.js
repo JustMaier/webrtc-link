@@ -1,1 +1,1 @@
-import './parse-options.test'
+require('./parse-options.test')

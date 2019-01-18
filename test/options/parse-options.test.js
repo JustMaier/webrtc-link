@@ -1,6 +1,6 @@
-import test from 'tape'
+const test = require('tape')
 
-import parseOptions from '../../src/parse-options'
+const parseOptions = require('../../src/parse-options')
 
 test('default options are set when none are defined', assert => {
   // given

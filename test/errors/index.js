@@ -1,2 +1,2 @@
-import './create-error.test'
-import './errors.test'
+require('./create-error.test')
+require('./errors.test')

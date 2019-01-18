@@ -4,4 +4,4 @@ function createError (message, code) {
   return err
 }
 
-export default createError
+module.exports = createError

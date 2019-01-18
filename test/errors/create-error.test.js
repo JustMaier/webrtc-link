@@ -1,7 +1,7 @@
-import test from 'tape'
+const test = require('tape')
 
-import createError from '../../src/create-error'
-import * as errorCodes from '../../src/error-codes'
+const createError = require('../../src/create-error')
+const errorCodes = require('../../src/error-codes')
 
 test('error object is created and returned', assert => {
   // given

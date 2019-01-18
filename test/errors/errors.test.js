@@ -1,8 +1,8 @@
-import test from 'tape'
+const test = require('tape')
 
-import * as testErrorCodes from './test-error-codes'
-import testUtil from '../test-util'
-import WebRTCPeer from '../../src/'
+const testErrorCodes = require('./test-error-codes')
+const testUtil = require('../test-util')
+const WebRTCPeer = require('../../src/')
 
 test('constructor throws an error when WebRTC is not supported', assert => {
   // given

@@ -1,9 +1,9 @@
-import { isSafari } from '../test-util'
+const { isSafari } = require('../test-util')
 
-import './add-stream.test'
-import './add-track.test'
-import './multiple-media-streams.test'
-import './constructor-media-stream.test'
+require('./add-stream.test')
+require('./add-track.test')
+require('./multiple-media-streams.test')
+require('./constructor-media-stream.test')
 
 if (isSafari()) {
   console.log('Safari :: skipping remove-stream.test.js and remove-track.test.js')

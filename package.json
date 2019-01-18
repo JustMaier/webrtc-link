@@ -21,9 +21,6 @@
     "webrtc"
   ],
   "babel": {
-    "plugins": [
-      "add-module-exports"
-    ],
     "presets": [
       [
         "@babel/preset-env",
@@ -51,7 +48,6 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "airtap": "^2.0.1",
-    "babel-plugin-add-module-exports": "^1.0.0",
     "babelify": "^10.0.0",
     "bowser": "^2.0.0-beta.3",
     "browserify": "^16.2.3",
@@ -66,7 +62,7 @@
     "build": "babel src/ --out-dir dist/",
     "build-standalone": "browserify --standalone WebRTCPeer src/index.js | uglifyjs --compress --mangle --output webrtc-link.min.js",
     "test-browser-local": "airtap --local --port 8080 test/run-all-tests.js",
-    "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-plugin-add-module-exports, babel-preset-env, babelify, snazzy, standard, tap-spec'",
+    "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-preset-env, babelify, snazzy, standard, tap-spec'",
     "test-node": "npm run test-lint && (tape test/node.test.js | tap-spec)"
   }
 }

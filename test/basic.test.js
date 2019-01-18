@@ -1,7 +1,7 @@
-import test from 'tape'
+const test = require('tape')
 
-import testUtil from './test-util'
-import WebRTCPeer from '../src/'
+const testUtil = require('./test-util')
+const WebRTCPeer = require('../src/')
 
 test('isConnected() is false when instantiated', assert => {
   const peerOne = new WebRTCPeer({ isInitiator: true })

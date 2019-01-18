@@ -1,4 +1,4 @@
-import BrowserDetector from 'bowser'
+const BrowserDetector = require('bowser')
 
 function addSignalEvents (peerOne, peerTwo) {
   peerOne.on('signal', signalData => peerTwo.signal(signalData))
@@ -71,7 +71,7 @@ function wait (milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-export default {
+module.exports = {
   addSignalEvents,
   getAudioTrack,
   getMediaStream,

@@ -30,4 +30,4 @@ function getStreams (userOptions) {
   return Array.isArray(userOptions.streams) ? userOptions.streams : []
 }
 
-export default parseOptions
+module.exports = parseOptions

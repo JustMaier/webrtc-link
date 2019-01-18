@@ -1,7 +1,7 @@
-import test from 'tape'
+const test = require('tape')
 
-import util from '../test-util'
-import WebRTCPeer from '../../src/'
+const util = require('../test-util')
+const WebRTCPeer = require('../../src/')
 
 test('single stream via constructor - initiator only', assert => {
   assert.plan(2)
