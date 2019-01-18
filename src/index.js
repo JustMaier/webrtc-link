@@ -1,3 +1,5 @@
+'use strict'
+
 const { EventEmitter } = require('events')
 
 const createError = require('./create-error')

@@ -1,3 +1,5 @@
+'use strict'
+
 function parseOptions (inputOptions) {
   const userOptions = inputOptions || {}
 
