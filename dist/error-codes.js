@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 exports.ADD_ICE_CANDIDATE = 'ERR_ADD_ICE_CANDIDATE';
 exports.CREATE_ANSWER = 'ERR_CREATE_ANSWER';

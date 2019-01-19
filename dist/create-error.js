@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function createError(message, code) {
   const err = new Error(message);

@@ -1,8 +1,12 @@
-"use strict";
+'use strict';
 
 const {
   EventEmitter
 } = require('events');
+
+const {
+  isChromium
+} = require('./utils');
 
 const createError = require('./create-error');
 
@@ -349,14 +353,13 @@ class WebRTCPeer extends EventEmitter {
   _createOffer() {
     const self = this;
     if (self._isDestroyed) return;
-    const isGoogleChrome = !!window.chrome;
 
-    if (!isGoogleChrome) {
+    if (!isChromium) {
       self._acceptIncomingVideoAndAudio();
     } // Google Chrome requires offerOptions - see issues.md for further information.
 
 
-    const offerOptions = !isGoogleChrome ? {} : {
+    const offerOptions = !isChromium ? {} : {
       offerToReceiveAudio: true,
       offerToReceiveVideo: true
     };
