@@ -61,6 +61,6 @@
     "build": "babel src/ --out-dir dist/",
     "build-standalone": "browserify --standalone WebRTCPeer src/index.js | uglifyjs --compress --mangle --output webrtc-link.min.js",
     "test-browser-local": "airtap --local --port 8080 test/run-all-tests.js",
-    "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-preset-env, babelify, snazzy, standard, tap-spec'"
+    "test-lint": "(standard | snazzy) && depcheck --ignores='babel-core, babel-preset-env, babelify, snazzy, standard'"
   }
 }
