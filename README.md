@@ -256,13 +256,6 @@ $ npm run test-browser-local
 Visit `http://localhost:8080/airtap` using Google Chrome, Mozilla Firefox, Opera or Safari.
 Open the developer tools window and view the console window to see additional test output.
 
-
-There are also tests for Node.js.
-
-```sh
-$ npm run test-node
-```
-
 ## License
 
 MIT. Copyright (c) [Shane Bloomer](https://shanebloomer.com).
