@@ -1,6 +1,6 @@
 {
   "name": "webrtc-link",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A module for working with WebRTC peer connections in the browser",
   "main": "dist/index.js",
   "license": "MIT",
