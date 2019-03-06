@@ -42,7 +42,9 @@
       "dist/"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "lite-ee": "^1.0.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",

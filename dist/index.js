@@ -1,8 +1,6 @@
 'use strict';
 
-const {
-  EventEmitter
-} = require('events');
+const LiteEventEmitter = require('lite-ee');
 
 const {
   isChromium
@@ -14,7 +12,7 @@ const parseOptions = require('./parse-options');
 
 const errorCodes = require('./error-codes');
 
-class WebRTCPeer extends EventEmitter {
+class WebRTCPeer extends LiteEventEmitter {
   constructor(options) {
     super();
     const self = this;
