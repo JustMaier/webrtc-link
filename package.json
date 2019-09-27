@@ -1,17 +1,9 @@
 {
   "name": "webrtc-link",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A module for working with WebRTC peer connections in the browser",
   "main": "dist/index.js",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shanebloomer/webrtc-link.git"
-  },
-  "homepage": "https://github.com/shanebloomer/webrtc-link",
-  "bugs": {
-    "url": "https://github.com/shanebloomer/webrtc-link/issues"
-  },
   "keywords": [
     "RTCPeerConnection",
     "RTCDatachannel",
@@ -46,17 +38,17 @@
     "lite-ee": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "airtap": "^2.0.1",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "airtap": "^2.0.2",
     "babelify": "^10.0.0",
-    "bowser": "^2.0.0-beta.3",
+    "bowser": "^2.4.0",
     "browserify": "^16.2.3",
     "depcheck": "^0.6.11",
     "snazzy": "^8.0.0",
     "standard": "^12.0.1",
-    "tape": "^4.9.1",
+    "tape": "^4.10.2",
     "uglify-es": "^3.3.9"
   },
   "scripts": {

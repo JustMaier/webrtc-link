@@ -29,7 +29,7 @@ test('multiple streams via constructor for both peers', async assert => {
     }
   })
 
-  await testUtil.wait(500)
+  await testUtil.wait(1000)
   assert.is(peerOneReceivedStreamIds.size, 10, 'received ten stream events for peer one')
   assert.is(peerTwoReceivedStreamIds.size, 10, 'received ten stream events for peer two')
   peerOne.destroy()

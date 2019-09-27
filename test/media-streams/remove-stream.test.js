@@ -72,9 +72,8 @@ function testMultipleRemoveStream (assert, sendingPeer, nonSendingPeer) {
 
     if (removeStreamEventCount === mediaStreams.length) {
       assert.pass('all media streams were successfully removed')
+      sendingPeer.destroy()
+      nonSendingPeer.destroy()
     }
-
-    sendingPeer.destroy()
-    nonSendingPeer.destroy()
   })
 }

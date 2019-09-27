@@ -2,10 +2,6 @@
 
 const LiteEventEmitter = require('lite-ee');
 
-const {
-  isChromium
-} = require('./utils');
-
 const createError = require('./create-error');
 
 const parseOptions = require('./parse-options');
@@ -352,17 +348,9 @@ class WebRTCPeer extends LiteEventEmitter {
     const self = this;
     if (self._isDestroyed) return;
 
-    if (!isChromium) {
-      self._acceptIncomingVideoAndAudio();
-    } // Google Chrome requires offerOptions - see issues.md for further information.
+    self._acceptIncomingVideoAndAudio();
 
-
-    const offerOptions = !isChromium ? {} : {
-      offerToReceiveAudio: true,
-      offerToReceiveVideo: true
-    };
-
-    self._peerConnection.createOffer(offerOptions).catch(onCreateOfferError).then(onCreateOfferSuccess).catch(onSetLocalDescriptionError).then(onSetLocalDescriptionSuccess);
+    self._peerConnection.createOffer().catch(onCreateOfferError).then(onCreateOfferSuccess).catch(onSetLocalDescriptionError).then(onSetLocalDescriptionSuccess);
 
     function onCreateOfferSuccess(offer) {
       if (self._isDestroyed) return;
